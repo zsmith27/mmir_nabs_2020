@@ -1,0 +1,31 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/11/2020"
+output: html_document
+---
+
+# Metrics
+
+## Metric Function List
+
+1. Richness: `taxa_rich()`
+2. Relative Richness: `taxa_pct_rich()`
+3. Abundance: `taxa_abund()`
+4. Relative Abundance: `taxa_pct()`
+5. Diversity Indices: `taxa_div()`
+6. Dominance: `taxa_dom()`
+7. Tolerance Indices: `taxa_tol()`
+
+## Metric Function Arguements
+
+- `.data` = A data frame where each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.
+- `.key_col` = A single column that represents a unique ID or key (i.e., site ID) that can be used to group the data.
+- `.counts_col` = A single numeric column that represents taxonomic counts.
+- `.group_col` = A single column that represents a taxomic rank or group of interest.
+- `.keep_col` = A column name used in combination with `.keep_vec` to subset the `.data`.
+- `.keep_vec` = A vector of values found in `.keep_col` that will be used to subset `.data`.
+- `.drop_col` = A column name used in combination with `.drop_vec` to exclude rows from the calculation.
+- `.drop_vec` = A vector of values found in `.drop_col` that will be removed from the calculation.
+
+

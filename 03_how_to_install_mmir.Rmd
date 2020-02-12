@@ -1,0 +1,20 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/11/2020"
+output: html_document
+---
+
+# Installation of mmir
+
+Install the Multi-Metric Index (MMI) package, __mmir__, that I am developing from GitHub (https://github.com/zsmith27/mmir).
+```{r, eval=FALSE}
+devtools::install_github("zsmith27/mmir")
+```
+
+## Load the Package
+
+Once __mmir__ is installed, load the package with `library()`.
+```{r}
+library(mmir)
+```

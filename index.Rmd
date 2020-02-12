@@ -1,0 +1,12 @@
+---
+title: "mmir: An R-package for Simple Biological Metric Calculations"
+subtitle: "NABs 2020"
+date: "March 5th, 2020"
+author: "Zachary M. Smith"
+site: bookdown::bookdown_site
+documentclass: book
+output:
+  bookdown::gitbook: default
+---
+
+![](images/mmir_hex-sticker.png)

@@ -1,0 +1,22 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/11/2020"
+output: html_document
+---
+
+# Introduction 
+
+## Objective
+
+- Demonstrate the functionality provided by the __mmir__ R-package for calculating biological metrics for the development and/or use in an MMI or IBI.
+
+## What is an MMI?
+
+- Multi-Metric Indices (MMIs) or Indices of Biotic Integrity (IBIs) are models that summarize multiple aspects of a biological community of interest (e.g., richness, diversity, relative abundance, tolerance, and functional feeding group) into a single numeric or categorical value representing ecological condition.
+  + considered a robust measure of water quality becuase it represents more than a snapshot in time
+  + have been around for nearly 40 years
+  
+## Need
+
+- MMIs are widely used by U.S. federal and state agencies to assess water quality but there is no R-package available to simplify and standardize metric calculations.

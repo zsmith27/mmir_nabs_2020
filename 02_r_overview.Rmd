@@ -1,0 +1,24 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/11/2020"
+output: html_document
+---
+
+# R Overview
+
+## R Packages
+
+![](images/r_packages.png)
+
+## R Functions
+
+![](images/func_structure.png)
+
+## Tidyverse
+
+![](images/tidyverse_circle.png)
+
+```{r, include=FALSE, message=FALSE}
+library(tidyverse)
+```

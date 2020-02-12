@@ -1,0 +1,45 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/11/2020"
+output: html_document
+---
+
+# Required Data Format
+
+- __Requirements__
+  + Each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.
+  + There should be columns representing:
+    + a unique ID for a sampling event (i.e., key)
+    + taxonomic counts
+    + various taxonomic ranks (e.g., individual columns for order, family, genus)
+    + various taxonomic groups (e.g., tolerance values and functional feeding groups)
+
+## Required Data Format Example
+
+```{r echo=FALSE}
+data("onondaga", package = "mmir")
+
+onondaga %>% 
+  select(unique_id,
+         reporting_value,
+         final_id,
+         order,
+         family,
+         genus) %>% 
+  DT::datatable()
+```
+
+
+## Data Preparation
+
+Prepare the data for metric calculation.
+```{r}
+nest.df <- onondaga %>% 
+  group_nest(unique_id, .key = "data") 
+```
+
+```{r echo=FALSE}
+nest.df %>% 
+  DT::datatable()
+```
