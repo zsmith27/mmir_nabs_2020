@@ -18,8 +18,7 @@ standard_dt <- function(x) {
     DT::datatable(x, 
     options = list(
       columnDefs = list(list(
-        className = 'dt-center',
-        targets = 5
+        className = 'dt-center'
       )),
       scrollY = 300,
       scroller = TRUE,

@@ -9,7 +9,7 @@ output: html_document
 
 Abundance refers to the total count of all taxa observed during a sampling event. We can apply a filter to this metric as well to focus on specific aspects of the community, such as the abundance of EPT.
 
-```{r}
+```{r abun_comm}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     abundance = taxa_abund(.,
@@ -24,7 +24,7 @@ nest.df <- nest.df %>%
   )
 ```
 
-```{r, echo=FALSE}
+```{r abund_comm_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```
 
@@ -32,7 +32,7 @@ standard_dt(nest.df)
 
 Generally, abundance metrics are better represented on a normalized scale. Calculating the relative abundance (percentage) of a subset metrics should provide a more robust measure than raw abundance measures.
 
-```{r}
+```{r rel_abund}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     pct_ephemeroptera = taxa_pct(.data = .,
@@ -48,6 +48,6 @@ nest.df <- nest.df %>%
   )
 ```
 
-```{r, echo=FALSE}
+```{r rel_abund_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```

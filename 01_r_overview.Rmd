@@ -19,6 +19,6 @@ output: html_document
 
 ![](images/hex_symbols/tidyverse_circle.png)
 
-```{r, include=FALSE, message=FALSE}
+```{r r_overview_tidyverse, include=FALSE, message=FALSE}
 library(tidyverse)
 ```

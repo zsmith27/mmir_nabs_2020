@@ -17,7 +17,7 @@ A number of diversity metrics can be calculated using `taxa_div()`:
 
 ## Community Diversity
 
-```{r}
+```{r div_comm}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     shannon_genus = taxa_div(.data = .,
@@ -54,13 +54,13 @@ nest.df <- nest.df %>%
   )
 ```
 
-```{r, echo=FALSE}
+```{r div_comm_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```
 
 ## Subset Diverstiy
 
-```{r}
+```{r div_sub}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     simpson_gen_ept = taxa_div(.data = .,
@@ -74,6 +74,6 @@ nest.df <- nest.df %>%
                             .unnest_col = data))
 ```
 
-```{r, echo=FALSE}
+```{r div_sub_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```

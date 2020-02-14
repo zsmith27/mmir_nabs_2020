@@ -7,7 +7,7 @@ output: html_document
 
 # Required Data Format
 
-- __Requirements__
+* __Requirements__
   + Each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.
   + There should be columns representing:
     + a unique ID for a sampling event (i.e., key)
@@ -17,7 +17,7 @@ output: html_document
 
 ## Required Data Format Example
 
-```{r echo=FALSE}
+```{r req_data_load, echo=FALSE}
 data("onondaga", package = "mmir")
 
 onondaga %>% 
@@ -34,12 +34,12 @@ onondaga %>%
 ## Data Preparation
 
 Prepare the data for metric calculation.
-```{r}
+```{r req_data_nest}
 nest.df <- onondaga %>% 
   group_nest(unique_id, .key = "data") 
 ```
 
-```{r echo=FALSE}
+```{r req_data_tbl, echo=FALSE}
 nest.df %>% 
   standard_dt()
 ```

@@ -8,13 +8,13 @@ output: html_document
 # mmir Setup
 
 Install the Multi-Metric Index (MMI) package, __mmir__, that I am developing from GitHub (https://github.com/zsmith27/mmir).
-```{r, eval=FALSE}
+```{r mmir_setup_install, eval=FALSE}
 devtools::install_github("zsmith27/mmir")
 ```
 
 ## Load the Package
 
 Once __mmir__ is installed, load the package with `library()`.
-```{r}
+```{r mmir_setup_library}
 library(mmir)
 ```

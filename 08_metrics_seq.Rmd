@@ -7,7 +7,7 @@ output: html_document
 
 # Sequence Through Multiple Metrics
 
-```{r}
+```{r seq_rich}
 seq.df <- nest.df %>% 
   bind_cols(
     taxa_seq(.data = .,
@@ -15,16 +15,17 @@ seq.df <- nest.df %>%
              .counts_col = reporting_value,
              .filter_cols_vec = c("class", "order", "family"),
              .group_col = genus,
-             .job = "rich"))
+             .job = "rich",
+             .unnest_col = data))
 ```
 
 
-```{r, echo=FALSE}
+```{r seq_rich_tbl, echo=FALSE}
 standard_dt(seq.df)
 ```
 
 
-```{r}
+```{r seq_mult}
 nest.df <- nest.df %>% 
   bind_cols(
     taxa_seq(.data = .,
@@ -49,6 +50,6 @@ nest.df <- nest.df %>%
 ```
 
 
-```{r, echo=FALSE}
+```{r seq_mult_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```

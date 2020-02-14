@@ -9,9 +9,9 @@ output: html_document
 
 Richness refers to the number of unique taxa. Typically, richness is used to refer to the number of unique species found in a sample but richness can be calculated for any taxonomic rank (e.g., order, family, genus).
 
-### Community Richness
+## Community Richness
 
-```{r}
+```{r rich_comm}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     rich_family = taxa_rich(.data = .,
@@ -28,13 +28,13 @@ nest.df <- nest.df %>%
 
 ```
 
-```{r, echo=FALSE}
+```{r rich_comm_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```
 
-### Subset Richness
+## Subset Richness
 
-```{r}
+```{r rich_sub}
 nest.df <- nest.df %>% 
   dplyr::mutate(
     rich_ephemeroptera_fam = taxa_rich(.data = .,
@@ -57,6 +57,6 @@ nest.df <- nest.df %>%
   )
 ```
 
-```{r, echo=FALSE}
+```{r rich_sub_tbl, echo=FALSE}
 standard_dt(nest.df)
 ```
