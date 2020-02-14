@@ -1,0 +1,13 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/13/2020"
+output: html_document
+---
+
+# Contact Information
+
+- __Name:__ Zachary M. Smith
+- __Email:__ zachary.smith2@dec.ny.gov
+- __GitHub:__ https://github.com/zsmith27
+  + __mmir:__ https://github.com/zsmith27/mmir

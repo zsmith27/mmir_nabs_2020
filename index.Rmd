@@ -1,6 +1,6 @@
 ---
 title: "mmir: An R-package for Simple Biological Metric Calculations"
-subtitle: "NABs 2020"
+subtitle: "Northeast Aquatic Biologists Conference 2020"
 date: "March 5th, 2020"
 author: "Zachary M. Smith"
 site: bookdown::bookdown_site
@@ -9,4 +9,24 @@ output:
   bookdown::gitbook: default
 ---
 
-![](images/mmir_hex-sticker.png)
+# Title Page
+
+![](images/mmir_hex-sticker.png){width=500px}
+
+```{r, echo=FALSE}
+standard_dt <- function(x) {
+    DT::datatable(x, 
+    options = list(
+      columnDefs = list(list(
+        className = 'dt-center',
+        targets = 5
+      )),
+      scrollY = 300,
+      scroller = TRUE,
+      scrollX = TRUE
+    )
+  )
+}
+  
+```
+

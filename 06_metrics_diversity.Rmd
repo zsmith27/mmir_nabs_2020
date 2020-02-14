@@ -1,0 +1,79 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/13/2020"
+output: html_document
+---
+
+# Diversity Metrics
+
+Diversity metric in general combine the measure of taxonomic evenness and taxonomic richness.
+A number of diversity metrics can be calculated using `taxa_div()`: 
+1. _Shannon-Wiener Diversity_ ("shannon")
+2. _Simpson's Diversity_ ("simpson")
+3. _Margalef's Diversity_ ("margalef")
+4. _Menhinick's Diversity_ ("menhinick")
+5. _Pielou Evenness_ ("pielou")
+
+## Community Diversity
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    shannon_genus = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .job = "shannon",
+                             .base_log = 2,
+                            .unnest_col = data),
+    simpson_genus = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .job = "simpson",
+                            .unnest_col = data),
+    margalef_genus = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .job = "margalef",
+                            .unnest_col = data),
+    menhinick_genus = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .job = "menhinick",
+                            .unnest_col = data),
+    pielou_genus = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .job = "pielou",
+                            .unnest_col = data)
+  )
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```
+
+## Subset Diverstiy
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    simpson_gen_ept = taxa_div(.data = .,
+                            .key_col = unique_id,
+                            .counts_col = reporting_value,
+                            .group_col = genus,
+                            .filter = order %in% c("ephemeroptera",
+                                                   "plecoptera",
+                                                   "trichoptera"),
+                            .job = "simpson",
+                            .unnest_col = data))
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```

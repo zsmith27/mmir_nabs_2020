@@ -27,7 +27,7 @@ onondaga %>%
          order,
          family,
          genus) %>% 
-  DT::datatable()
+  standard_dt()
 ```
 
 
@@ -41,5 +41,5 @@ nest.df <- onondaga %>%
 
 ```{r echo=FALSE}
 nest.df %>% 
-  DT::datatable()
+  standard_dt()
 ```

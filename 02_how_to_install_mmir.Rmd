@@ -5,7 +5,7 @@ date: "2/11/2020"
 output: html_document
 ---
 
-# Installation of mmir
+# mmir Setup
 
 Install the Multi-Metric Index (MMI) package, __mmir__, that I am developing from GitHub (https://github.com/zsmith27/mmir).
 ```{r, eval=FALSE}

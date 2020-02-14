@@ -1,0 +1,54 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/13/2020"
+output: html_document
+---
+
+# Sequence Through Multiple Metrics
+
+```{r}
+seq.df <- nest.df %>% 
+  bind_cols(
+    taxa_seq(.data = .,
+             .key_col = unique_id,
+             .counts_col = reporting_value,
+             .filter_cols_vec = c("class", "order", "family"),
+             .group_col = genus,
+             .job = "rich"))
+```
+
+
+```{r, echo=FALSE}
+standard_dt(seq.df)
+```
+
+
+```{r}
+nest.df <- nest.df %>% 
+  bind_cols(
+    taxa_seq(.data = .,
+             .key_col = unique_id,
+             .counts_col = reporting_value,
+             .filter_cols_vec = c("class", "order", "family"),
+             .group_col = genus,
+             .job = "rich"),
+    taxa_seq(.data = .,
+             .key_col = unique_id,
+             .counts_col = reporting_value,
+             .filter_cols_vec = c("class", "order", "family"),
+             .group_col = genus,
+             .job = "pct"),
+    taxa_seq(.data = .,
+             .key_col = unique_id,
+             .counts_col = reporting_value,
+             .filter_cols_vec = c("class", "order", "family"),
+             .group_col = genus,
+             .base_log = 2,
+             .job = "shannon"))
+```
+
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```

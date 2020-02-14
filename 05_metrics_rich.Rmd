@@ -1,0 +1,62 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/13/2020"
+output: html_document
+---
+
+# Richness Metrics
+
+Richness refers to the number of unique taxa. Typically, richness is used to refer to the number of unique species found in a sample but richness can be calculated for any taxonomic rank (e.g., order, family, genus).
+
+### Community Richness
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    rich_family = taxa_rich(.data = .,
+                            .key_col = unique_id,
+                            .group_col = family,
+                            .unnest_col = data),
+    rich_genus = taxa_rich(.data = .,
+                            .key_col = unique_id,
+                            .group_col = genus,
+                            .unnest_col = data)
+  )
+
+
+
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```
+
+### Subset Richness
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    rich_ephemeroptera_fam = taxa_rich(.data = .,
+                                       .key_col = unique_id,
+                                       .group_col = family,
+                                       .filter = order %in% "ephemeroptera",
+                                       .unnest_col = data),
+    rich_ephemeroptera_gen = taxa_rich(.data = .,
+                                       .key_col = unique_id,
+                                       .group_col = genus,
+                                       .filter = order %in% "ephemeroptera",
+                                       .unnest_col = data),
+    rich_ept_gen = taxa_rich(.data = .,
+                             .key_col = unique_id,
+                             .group_col = genus,
+                             .filter = order %in% c("ephemeroptera",
+                                                    "plecoptera",
+                                                    "trichoptera"),
+                             .unnest_col = data)
+  )
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```

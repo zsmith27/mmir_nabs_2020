@@ -1,0 +1,53 @@
+---
+title: "Untitled"
+author: "Zachary M. Smith"
+date: "2/13/2020"
+output: html_document
+---
+
+# Abundance and Relative Abundance (%) Metrics
+
+Abundance refers to the total count of all taxa observed during a sampling event. We can apply a filter to this metric as well to focus on specific aspects of the community, such as the abundance of EPT.
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    abundance = taxa_abund(.,
+                           .key_col = unique_id,
+                           .counts_col = reporting_value),
+    abund_ept = taxa_abund(.,
+                           .key_col = unique_id,
+                           .counts_col = reporting_value,
+                           .filter = order %in% c("ephemeroptera",
+                                                  "plecoptera",
+                                                  "trichoptera"))
+  )
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```
+
+## Subset Relative Abundance (%)
+
+Generally, abundance metrics are better represented on a normalized scale. Calculating the relative abundance (percentage) of a subset metrics should provide a more robust measure than raw abundance measures.
+
+```{r}
+nest.df <- nest.df %>% 
+  dplyr::mutate(
+    pct_ephemeroptera = taxa_pct(.data = .,
+                                  .key_col = unique_id,
+                                  .counts_col = reporting_value,
+                                  .filter = order %in% "ephemeroptera"),
+    pct_ept = taxa_pct(.data = .,
+                        .key_col = unique_id,
+                        .counts_col = reporting_value,
+                        .filter = order %in% c("ephemeroptera",
+                                                   "plecoptera",
+                                                   "trichoptera"))
+  )
+```
+
+```{r, echo=FALSE}
+standard_dt(nest.df)
+```

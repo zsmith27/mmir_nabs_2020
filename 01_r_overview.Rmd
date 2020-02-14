@@ -9,15 +9,15 @@ output: html_document
 
 ## R Packages
 
-![](images/r_packages.png)
+![](images/introduction/packages.png)
 
 ## R Functions
 
-![](images/func_structure.png)
+![](images/writing_functions/func_structure.png)
 
 ## Tidyverse
 
-![](images/tidyverse_circle.png)
+![](images/hex_symbols/tidyverse_circle.png)
 
 ```{r, include=FALSE, message=FALSE}
 library(tidyverse)

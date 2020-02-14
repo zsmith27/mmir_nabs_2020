@@ -1,0 +1,16 @@
+---
+title: 'mmir: An R-package for Simple Biological Metric Calculations'
+author: "Zachary M. Smith"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Acknowledgements
+
+- Interstate Commission on the Potomac River Basin (ICPRB)
+  + With a special thank you to Dr. Claire Buchanan
+  
+- New York State Department of Environmental Conservation (NYSDEC)
+  + With a special thank you to Dr. Alexander J. Smith
+  
+
