@@ -38,3 +38,9 @@ nest.df <- nrsa_nap_0809 %>%
 nest.df %>% 
   standard_dt()
 ```
+
+
+![](images/tidyr-nest.png){width=1000px}
+
+Grolemund, Garret. 2019. The Tidyverse Cookbook. https://www.google.com/url?sa=i&url=https%3A%2F%2Frstudio-education.github.io%2Ftidyverse-cookbook%2Ftransform-tables.html&psig=AOvVaw1NPuLqh0wRg-HLOJ79PeK6&ust=1583514049818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLCFtNvng-gCFQAAAAAdAAAAABAU
+

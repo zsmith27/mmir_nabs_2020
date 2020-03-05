@@ -9,8 +9,14 @@ output: html_document
 
 - Interstate Commission on the Potomac River Basin (ICPRB)
   + With a special thank you to Dr. Claire Buchanan
+
+<center>
+![](images/icprb_logo.png){width=200px}
+</center>
   
 - New York State Department of Environmental Conservation (NYSDEC)
   + With a special thank you to Dr. Alexander J. Smith
   
-
+<center>
+![](images/nysdec_logo.png){width=500px}
+</center>
