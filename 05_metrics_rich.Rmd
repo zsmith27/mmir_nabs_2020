@@ -14,11 +14,6 @@ Richness refers to the number of unique taxa. Typically, richness is used to ref
 ```{r rich_comm}
 rich.df <- nest.df %>% 
   dplyr::mutate(
-    rich_family = taxa_rich(.dataframe = .,
-                            .key_col = uid,
-                            .counts_col = total,
-                            .group_col = family,
-                            .unnest_col = data),
     rich_genus = taxa_rich(.dataframe = .,
                            .key_col = uid,
                            .counts_col = total,

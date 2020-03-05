@@ -13,6 +13,10 @@ output:
 
 ![](images/mmir_hex-sticker.png){width=500px}
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE)
+```
+
 ```{r, echo=FALSE}
 standard_dt <- function(x) {
     DT::datatable(x, 

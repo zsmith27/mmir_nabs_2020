@@ -14,7 +14,7 @@ output: html_document
 ## What is an MMI?
 
 - Multi-Metric Indices (MMIs) or Indices of Biotic Integrity (IBIs) are models that summarize multiple aspects of a biological community of interest (e.g., richness, diversity, relative abundance, tolerance, and functional feeding group) into a single numeric or categorical value representing ecological condition.
-  + considered a robust measure of water quality becuase it represents more than a snapshot in time
+  + considered a robust measure of water quality because it represents more than a snapshot in time
   + have been around for nearly 40 years
   
 ## Need

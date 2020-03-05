@@ -5,7 +5,7 @@ date: "2/13/2020"
 output: html_document
 ---
 
-# Brining it All Together
+# Bringing it All Together
 
 ```{r, message=FALSE}
 library(mmir)

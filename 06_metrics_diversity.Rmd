@@ -59,7 +59,7 @@ div.df <- nest.df %>%
 standard_dt(div.df)
 ```
 
-## Subset Diverstiy
+## Subset Diversity
 
 ```{r div_sub}
 sub_div.df <- nest.df %>% 
