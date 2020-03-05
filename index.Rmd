@@ -9,7 +9,7 @@ output:
   bookdown::gitbook: default
 ---
 
-# Title Page
+# mmir
 
 ![](images/mmir_hex-sticker.png){width=500px}
 

@@ -9,6 +9,7 @@ output: html_document
 
 Diversity metric in general combine the measure of taxonomic evenness and taxonomic richness.
 A number of diversity metrics can be calculated using `taxa_div()`: 
+
 1. _Shannon-Wiener Diversity_ ("shannon")
 2. _Simpson's Diversity_ ("simpson")
 3. _Margalef's Diversity_ ("margalef")
@@ -18,36 +19,36 @@ A number of diversity metrics can be calculated using `taxa_div()`:
 ## Community Diversity
 
 ```{r div_comm}
-nest.df <- nest.df %>% 
+div.df <- nest.df %>% 
   dplyr::mutate(
-    shannon_genus = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
-                            .group_col = genus,
-                            .job = "shannon",
+    shannon_genus = taxa_div(.dataframe = .,
+                             .key_col = uid,
+                             .counts_col = total,
+                             .group_col = genus,
+                             .job = "shannon",
                              .base_log = 2,
-                            .unnest_col = data),
-    simpson_genus = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
-                            .group_col = genus,
-                            .job = "simpson",
-                            .unnest_col = data),
-    margalef_genus = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
-                            .group_col = genus,
-                            .job = "margalef",
-                            .unnest_col = data),
-    menhinick_genus = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
-                            .group_col = genus,
-                            .job = "menhinick",
-                            .unnest_col = data),
-    pielou_genus = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
+                             .unnest_col = data),
+    simpson_genus = taxa_div(.dataframe = .,
+                             .key_col = uid,
+                             .counts_col = total,
+                             .group_col = genus,
+                             .job = "simpson",
+                             .unnest_col = data),
+    margalef_genus = taxa_div(.dataframe = .,
+                              .key_col = uid,
+                              .counts_col = total,
+                              .group_col = genus,
+                              .job = "margalef",
+                              .unnest_col = data),
+    menhinick_genus = taxa_div(.dataframe = .,
+                               .key_col = uid,
+                               .counts_col = total,
+                               .group_col = genus,
+                               .job = "menhinick",
+                               .unnest_col = data),
+    pielou_genus = taxa_div(.dataframe = .,
+                            .key_col = uid,
+                            .counts_col = total,
                             .group_col = genus,
                             .job = "pielou",
                             .unnest_col = data)
@@ -55,17 +56,17 @@ nest.df <- nest.df %>%
 ```
 
 ```{r div_comm_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(div.df)
 ```
 
 ## Subset Diverstiy
 
 ```{r div_sub}
-nest.df <- nest.df %>% 
+sub_div.df <- nest.df %>% 
   dplyr::mutate(
-    simpson_gen_ept = taxa_div(.data = .,
-                            .key_col = unique_id,
-                            .counts_col = reporting_value,
+    simpson_gen_ept = taxa_div(.dataframe = .,
+                            .key_col = uid,
+                            .counts_col = total,
                             .group_col = genus,
                             .filter = order %in% c("ephemeroptera",
                                                    "plecoptera",
@@ -75,5 +76,5 @@ nest.df <- nest.df %>%
 ```
 
 ```{r div_sub_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(sub_div.df)
 ```

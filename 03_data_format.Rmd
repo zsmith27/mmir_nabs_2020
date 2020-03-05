@@ -18,25 +18,19 @@ output: html_document
 ## Required Data Format Example
 
 ```{r req_data_load, echo=FALSE}
-data("onondaga", package = "mmir")
+data("nrsa_nap_0809", package = "mmir")
 
-onondaga %>% 
-  select(unique_id,
-         reporting_value,
-         final_id,
-         order,
-         family,
-         genus) %>% 
+nrsa_nap_0809 %>% 
   standard_dt()
 ```
 
 
-## Data Preparation
+## Data Preparation for Integration with dplyr
 
 Prepare the data for metric calculation.
 ```{r req_data_nest}
-nest.df <- onondaga %>% 
-  group_nest(unique_id, .key = "data") 
+nest.df <- nrsa_nap_0809 %>% 
+  dplyr::group_nest(uid, rt_nrsa_cat, .key = "data") 
 ```
 
 ```{r req_data_tbl, echo=FALSE}

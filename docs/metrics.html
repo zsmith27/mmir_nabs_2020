@@ -51,10 +51,10 @@
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
-<script src="libs/datatables-binding-0.11/datatables.js"></script>
-<link href="libs/dt-core-1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-<link href="libs/dt-core-1.10.19/css/jquery.dataTables.extra.css" rel="stylesheet" />
-<script src="libs/dt-core-1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
 <link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
 <script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
 
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Title Page</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> mmir</a></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>2.1</b> Objective</a></li>
 <li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#what-is-an-mmi"><i class="fa fa-check"></i><b>2.2</b> What is an MMI?</a></li>
@@ -150,11 +150,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="required-data-format.html"><a href="required-data-format.html"><i class="fa fa-check"></i><b>5</b> Required Data Format</a><ul>
 <li class="chapter" data-level="5.1" data-path="required-data-format.html"><a href="required-data-format.html#required-data-format-example"><i class="fa fa-check"></i><b>5.1</b> Required Data Format Example</a></li>
-<li class="chapter" data-level="5.2" data-path="required-data-format.html"><a href="required-data-format.html#data-preparation"><i class="fa fa-check"></i><b>5.2</b> Data Preparation</a></li>
+<li class="chapter" data-level="5.2" data-path="required-data-format.html"><a href="required-data-format.html#data-preparation-for-integration-with-dplyr"><i class="fa fa-check"></i><b>5.2</b> Data Preparation for Integration with dplyr</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="metrics.html"><a href="metrics.html"><i class="fa fa-check"></i><b>6</b> Metrics</a><ul>
 <li class="chapter" data-level="6.1" data-path="metrics.html"><a href="metrics.html#metric-function-list"><i class="fa fa-check"></i><b>6.1</b> Metric Function List</a></li>
 <li class="chapter" data-level="6.2" data-path="metrics.html"><a href="metrics.html#metric-function-arguements"><i class="fa fa-check"></i><b>6.2</b> Metric Function Arguements</a></li>
+<li class="chapter" data-level="6.3" data-path="metrics.html"><a href="metrics.html#metric-function-output"><i class="fa fa-check"></i><b>6.3</b> Metric Function Output</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="richness-metrics.html"><a href="richness-metrics.html"><i class="fa fa-check"></i><b>7</b> Richness Metrics</a><ul>
 <li class="chapter" data-level="7.1" data-path="richness-metrics.html"><a href="richness-metrics.html#community-richness"><i class="fa fa-check"></i><b>7.1</b> Community Richness</a></li>
@@ -164,11 +165,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1" data-path="diversity-metrics.html"><a href="diversity-metrics.html#community-diversity"><i class="fa fa-check"></i><b>8.1</b> Community Diversity</a></li>
 <li class="chapter" data-level="8.2" data-path="diversity-metrics.html"><a href="diversity-metrics.html#subset-diverstiy"><i class="fa fa-check"></i><b>8.2</b> Subset Diverstiy</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="abundance-and-relative-abundance-metrics.html"><a href="abundance-and-relative-abundance-metrics.html"><i class="fa fa-check"></i><b>9</b> Abundance and Relative Abundance (%) Metrics</a><ul>
-<li class="chapter" data-level="9.1" data-path="abundance-and-relative-abundance-metrics.html"><a href="abundance-and-relative-abundance-metrics.html#subset-relative-abundance"><i class="fa fa-check"></i><b>9.1</b> Subset Relative Abundance (%)</a></li>
-</ul></li>
+<li class="chapter" data-level="9" data-path="relative-abundance-metrics.html"><a href="relative-abundance-metrics.html"><i class="fa fa-check"></i><b>9</b> Relative Abundance (%) Metrics</a></li>
 <li class="chapter" data-level="10" data-path="sequence-through-multiple-metrics.html"><a href="sequence-through-multiple-metrics.html"><i class="fa fa-check"></i><b>10</b> Sequence Through Multiple Metrics</a></li>
-<li class="chapter" data-level="11" data-path="metric-selection.html"><a href="metric-selection.html"><i class="fa fa-check"></i><b>11</b> Metric Selection</a></li>
+<li class="chapter" data-level="11" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html"><i class="fa fa-check"></i><b>11</b> Brining it All Together</a><ul>
+<li class="chapter" data-level="11.1" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#metric-calculation"><i class="fa fa-check"></i><b>11.1</b> Metric Calculation</a></li>
+<li class="chapter" data-level="11.2" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#metric-selection"><i class="fa fa-check"></i><b>11.2</b> Metric Selection</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#traintest-split"><i class="fa fa-check"></i><b>11.2.1</b> Train/Test Split</a></li>
+<li class="chapter" data-level="11.2.2" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#preprocess"><i class="fa fa-check"></i><b>11.2.2</b> Preprocess</a></li>
+<li class="chapter" data-level="11.2.3" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#model"><i class="fa fa-check"></i><b>11.2.3</b> Model</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>12</b> Acknowledgements</a></li>
 <li class="chapter" data-level="13" data-path="contact-information.html"><a href="contact-information.html"><i class="fa fa-check"></i><b>13</b> Contact Information</a></li>
 </ul>
@@ -193,25 +199,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Metrics:</strong> a measure of a specific aspect of a biological community.</p>
 <div id="metric-function-list" class="section level2">
 <h2><span class="header-section-number">6.1</span> Metric Function List</h2>
+<p>All of the metric functions in <strong>mmir</strong> begin with the prefix <code>taxa_</code>. This prefix makes it easier to call these functions becuase RStudio will provide a list of functions that begin with the same prefix, in this case <code>taxa_</code>.</p>
 <ol style="list-style-type: decimal">
-<li>Richness: <code>taxa_rich()</code></li>
-<li>Relative Richness: <code>taxa_pct_rich()</code></li>
-<li>Diversity Indices: <code>taxa_div()</code></li>
-<li>Abundance: <code>taxa_abund()</code></li>
-<li>Relative Abundance: <code>taxa_pct()</code></li>
-<li>Dominance: <code>taxa_dom()</code></li>
-<li>Tolerance Indices: <code>taxa_tol()</code></li>
+<li><code>taxa_rich()</code>calculates taxonomic richness.</li>
+<li><code>taxa_pct_rich()</code> calculates relative taxonomic richness.</li>
+<li><code>taxa_div()</code> calculates taxonomic diversity indices.
+<ul>
+<li><code>shannon</code> Shannon-Wiener Diversity</li>
+<li><code>simpson</code> Simpson’s Diversity</li>
+<li><code>margalef</code> Margalef’s Diversity</li>
+<li><code>menhinick</code> Menhinick’s Diversity</li>
+<li><code>pielou</code> Pielou Evenness</li>
+</ul></li>
+<li><code>taxa_abund()</code> calculates taxonomic abundance.</li>
+<li><code>taxa_pct()</code> calculates relative taxonomic abundance.</li>
+<li><code>taxa_dom()</code> calculates relative taxonomic dominance.</li>
+<li><code>taxa_tol_index()</code> calculates taxonomic tolerance indices.</li>
 </ol>
 </div>
 <div id="metric-function-arguements" class="section level2">
 <h2><span class="header-section-number">6.2</span> Metric Function Arguements</h2>
 <ul>
-<li><code>.data</code> = A data frame where each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.</li>
-<li><code>.key_col</code> = A single column that represents a unique ID or key (i.e., site ID) that can be used to group the data.</li>
-<li><code>.counts_col</code> = A single numeric column that represents taxonomic counts.</li>
-<li><code>.group_col</code> = A single column that represents a taxomic rank or group of interest.</li>
-<li><code>.filter</code> = A filter to be applied to the data prior to calculation the metric of interest.</li>
+<li><code>.dataframe</code> = A data frame where each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.</li>
+<li><code>.key_col</code> = One unquoted column name that represents a key (i.e., unique ID) for a sampling event for which to group (i.e., aggregate) the data.</li>
+<li><code>.counts_col</code> = One unquoted column name that represents taxonomic counts.</li>
+<li><code>.filter</code> = A logical statement to subset the data frame prior to calculating the metric of interest.</li>
+<li><code>.unnest_col</code> = One unqouted column name that represents nested data. If this column is NULL (default), then the data will not be unnested.</li>
+<li><ul>
+<li><code>.group_col</code> = One unquoted column name that represents a taxomic rank or group of interest.</li>
+</ul></li>
 </ul>
+</div>
+<div id="metric-function-output" class="section level2">
+<h2><span class="header-section-number">6.3</span> Metric Function Output</h2>
+<p>The output of each of these functions will be a <strong>vector</strong>.</p>
+<p><strong>Vector Example:</strong> 10, 1, 13, 15, 2, 6, 7</p>
 
 </div>
 </div>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Brining it All Together | mmir: An R-package for Simple Biological Metric Calculations</title>
+  <meta name="description" content="11 Brining it All Together | mmir: An R-package for Simple Biological Metric Calculations" />
+  <meta name="generator" content="bookdown 0.17 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Brining it All Together | mmir: An R-package for Simple Biological Metric Calculations" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Brining it All Together | mmir: An R-package for Simple Biological Metric Calculations" />
+  
+  
+  
+
+<meta name="author" content="Zachary M. Smith" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="sequence-through-multiple-metrics.html"/>
+<link rel="next" href="acknowledgements.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.12/datatables.js"></script>
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.20/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.20/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> mmir</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#objective"><i class="fa fa-check"></i><b>2.1</b> Objective</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#what-is-an-mmi"><i class="fa fa-check"></i><b>2.2</b> What is an MMI?</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#need"><i class="fa fa-check"></i><b>2.3</b> Need</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="r-overview.html"><a href="r-overview.html"><i class="fa fa-check"></i><b>3</b> R Overview</a><ul>
+<li class="chapter" data-level="3.1" data-path="r-overview.html"><a href="r-overview.html#r-packages"><i class="fa fa-check"></i><b>3.1</b> R Packages</a></li>
+<li class="chapter" data-level="3.2" data-path="r-overview.html"><a href="r-overview.html#r-functions"><i class="fa fa-check"></i><b>3.2</b> R Functions</a></li>
+<li class="chapter" data-level="3.3" data-path="r-overview.html"><a href="r-overview.html#tidyverse"><i class="fa fa-check"></i><b>3.3</b> Tidyverse</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="mmir-setup.html"><a href="mmir-setup.html"><i class="fa fa-check"></i><b>4</b> mmir Setup</a><ul>
+<li class="chapter" data-level="4.1" data-path="mmir-setup.html"><a href="mmir-setup.html#load-the-package"><i class="fa fa-check"></i><b>4.1</b> Load the Package</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="required-data-format.html"><a href="required-data-format.html"><i class="fa fa-check"></i><b>5</b> Required Data Format</a><ul>
+<li class="chapter" data-level="5.1" data-path="required-data-format.html"><a href="required-data-format.html#required-data-format-example"><i class="fa fa-check"></i><b>5.1</b> Required Data Format Example</a></li>
+<li class="chapter" data-level="5.2" data-path="required-data-format.html"><a href="required-data-format.html#data-preparation-for-integration-with-dplyr"><i class="fa fa-check"></i><b>5.2</b> Data Preparation for Integration with dplyr</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="metrics.html"><a href="metrics.html"><i class="fa fa-check"></i><b>6</b> Metrics</a><ul>
+<li class="chapter" data-level="6.1" data-path="metrics.html"><a href="metrics.html#metric-function-list"><i class="fa fa-check"></i><b>6.1</b> Metric Function List</a></li>
+<li class="chapter" data-level="6.2" data-path="metrics.html"><a href="metrics.html#metric-function-arguements"><i class="fa fa-check"></i><b>6.2</b> Metric Function Arguements</a></li>
+<li class="chapter" data-level="6.3" data-path="metrics.html"><a href="metrics.html#metric-function-output"><i class="fa fa-check"></i><b>6.3</b> Metric Function Output</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="richness-metrics.html"><a href="richness-metrics.html"><i class="fa fa-check"></i><b>7</b> Richness Metrics</a><ul>
+<li class="chapter" data-level="7.1" data-path="richness-metrics.html"><a href="richness-metrics.html#community-richness"><i class="fa fa-check"></i><b>7.1</b> Community Richness</a></li>
+<li class="chapter" data-level="7.2" data-path="richness-metrics.html"><a href="richness-metrics.html#subset-richness"><i class="fa fa-check"></i><b>7.2</b> Subset Richness</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="diversity-metrics.html"><a href="diversity-metrics.html"><i class="fa fa-check"></i><b>8</b> Diversity Metrics</a><ul>
+<li class="chapter" data-level="8.1" data-path="diversity-metrics.html"><a href="diversity-metrics.html#community-diversity"><i class="fa fa-check"></i><b>8.1</b> Community Diversity</a></li>
+<li class="chapter" data-level="8.2" data-path="diversity-metrics.html"><a href="diversity-metrics.html#subset-diverstiy"><i class="fa fa-check"></i><b>8.2</b> Subset Diverstiy</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="relative-abundance-metrics.html"><a href="relative-abundance-metrics.html"><i class="fa fa-check"></i><b>9</b> Relative Abundance (%) Metrics</a></li>
+<li class="chapter" data-level="10" data-path="sequence-through-multiple-metrics.html"><a href="sequence-through-multiple-metrics.html"><i class="fa fa-check"></i><b>10</b> Sequence Through Multiple Metrics</a></li>
+<li class="chapter" data-level="11" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html"><i class="fa fa-check"></i><b>11</b> Brining it All Together</a><ul>
+<li class="chapter" data-level="11.1" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#metric-calculation"><i class="fa fa-check"></i><b>11.1</b> Metric Calculation</a></li>
+<li class="chapter" data-level="11.2" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#metric-selection"><i class="fa fa-check"></i><b>11.2</b> Metric Selection</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#traintest-split"><i class="fa fa-check"></i><b>11.2.1</b> Train/Test Split</a></li>
+<li class="chapter" data-level="11.2.2" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#preprocess"><i class="fa fa-check"></i><b>11.2.2</b> Preprocess</a></li>
+<li class="chapter" data-level="11.2.3" data-path="brining-it-all-together.html"><a href="brining-it-all-together.html#model"><i class="fa fa-check"></i><b>11.2.3</b> Model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="acknowledgements.html"><a href="acknowledgements.html"><i class="fa fa-check"></i><b>12</b> Acknowledgements</a></li>
+<li class="chapter" data-level="13" data-path="contact-information.html"><a href="contact-information.html"><i class="fa fa-check"></i><b>13</b> Contact Information</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">mmir: An R-package for Simple Biological Metric Calculations</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="brining-it-all-together" class="section level1">
+<h1><span class="header-section-number">11</span> Brining it All Together</h1>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">library</span>(mmir)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">library</span>(rsample)</a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="kw">library</span>(recipes)</a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="kw">library</span>(parsnip)</a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="kw">library</span>(workflows)</a>
+<a class="sourceLine" id="cb20-7" title="7"><span class="kw">library</span>(yardstick)</a>
+<a class="sourceLine" id="cb20-8" title="8"><span class="kw">library</span>(themis)</a></code></pre></div>
+<p>Prepare the data for metric calculation.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">data</span>(<span class="st">&quot;nrsa_nap_0809&quot;</span>)</a>
+<a class="sourceLine" id="cb21-2" title="2"></a>
+<a class="sourceLine" id="cb21-3" title="3">nest.df &lt;-<span class="st"> </span>nrsa_nap_<span class="dv">0809</span> <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="st">  </span><span class="kw">group_nest</span>(uid, rt_nrsa_cat, <span class="dt">.key =</span> <span class="st">&quot;data&quot;</span>) </a></code></pre></div>
+<div id="metric-calculation" class="section level2">
+<h2><span class="header-section-number">11.1</span> Metric Calculation</h2>
+<p>The following code-chunk will produce more than 1,000 biological metrics.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">metrics.df &lt;-<span class="st"> </span>nest.df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb22-3" title="3">    <span class="dt">rich_family =</span> <span class="kw">taxa_rich</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-4" title="4">                            <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-5" title="5">                            <span class="dt">.group_col =</span> family,</a>
+<a class="sourceLine" id="cb22-6" title="6">                            <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-7" title="7">    <span class="dt">rich_genus =</span> <span class="kw">taxa_rich</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-8" title="8">                           <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-9" title="9">                           <span class="dt">.group_col =</span> genus,</a>
+<a class="sourceLine" id="cb22-10" title="10">                           <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-11" title="11">    <span class="dt">rich_target_taxon =</span> <span class="kw">taxa_rich</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-12" title="12">                                  <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-13" title="13">                                  <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-14" title="14">                                  <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-15" title="15">    <span class="dt">gini_simpson_ept =</span> <span class="kw">taxa_div</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-16" title="16">                                <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-17" title="17">                                <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-18" title="18">                                <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-19" title="19">                                <span class="dt">.filter =</span> order <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ephemeroptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-20" title="20">                                                       <span class="st">&quot;plecoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-21" title="21">                                                       <span class="st">&quot;trichoptera&quot;</span>),</a>
+<a class="sourceLine" id="cb22-22" title="22">                                <span class="dt">.job =</span> <span class="st">&quot;gini_simpson&quot;</span>,</a>
+<a class="sourceLine" id="cb22-23" title="23">                                <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-24" title="24">    <span class="dt">simpson_ept =</span> <span class="kw">taxa_div</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-25" title="25">                           <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-26" title="26">                           <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-27" title="27">                           <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-28" title="28">                           <span class="dt">.filter =</span> order <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ephemeroptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-29" title="29">                                                  <span class="st">&quot;plecoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-30" title="30">                                                  <span class="st">&quot;trichoptera&quot;</span>),</a>
+<a class="sourceLine" id="cb22-31" title="31">                           <span class="dt">.job =</span> <span class="st">&quot;simpson&quot;</span>,</a>
+<a class="sourceLine" id="cb22-32" title="32">                           <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-33" title="33">    <span class="dt">shannon_ept =</span> <span class="kw">taxa_div</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-34" title="34">                           <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-35" title="35">                           <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-36" title="36">                           <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-37" title="37">                           <span class="dt">.filter =</span> order <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ephemeroptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-38" title="38">                                                  <span class="st">&quot;plecoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-39" title="39">                                                  <span class="st">&quot;trichoptera&quot;</span>),</a>
+<a class="sourceLine" id="cb22-40" title="40">                           <span class="dt">.job =</span> <span class="st">&quot;shannon&quot;</span>,</a>
+<a class="sourceLine" id="cb22-41" title="41">                           <span class="dt">.base_log =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb22-42" title="42">                           <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-43" title="43">    <span class="dt">pct_ept =</span> <span class="kw">taxa_pct</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-44" title="44">                       <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-45" title="45">                       <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-46" title="46">                       <span class="dt">.filter =</span> order <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ephemeroptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-47" title="47">                                              <span class="st">&quot;plecoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-48" title="48">                                              <span class="st">&quot;trichoptera&quot;</span>),</a>
+<a class="sourceLine" id="cb22-49" title="49">                       <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-50" title="50">    <span class="dt">pct_cote =</span> <span class="kw">taxa_pct</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-51" title="51">                        <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-52" title="52">                        <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-53" title="53">                        <span class="dt">.filter =</span> order <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;coleoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-54" title="54">                                               <span class="st">&quot;odonata&quot;</span>,</a>
+<a class="sourceLine" id="cb22-55" title="55">                                               <span class="st">&quot;trichoptera&quot;</span>,</a>
+<a class="sourceLine" id="cb22-56" title="56">                                               <span class="st">&quot;ephemeroptera&quot;</span>),</a>
+<a class="sourceLine" id="cb22-57" title="57">                        <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-58" title="58">    <span class="dt">dom_1_target_taxon =</span> <span class="kw">taxa_dom</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-59" title="59">                                  <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-60" title="60">                                  <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-61" title="61">                                  <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-62" title="62">                                  <span class="dt">.dom_level =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb22-63" title="63">                                  <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-64" title="64">    <span class="dt">dom_5_target_taxon =</span> <span class="kw">taxa_dom</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-65" title="65">                                  <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-66" title="66">                                  <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-67" title="67">                                  <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-68" title="68">                                  <span class="dt">.dom_level =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb22-69" title="69">                                  <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-70" title="70">    <span class="dt">tol_index =</span> <span class="kw">taxa_tol_index</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-71" title="71">                               <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-72" title="72">                               <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-73" title="73">                               <span class="dt">.tol_col =</span> ptv,</a>
+<a class="sourceLine" id="cb22-74" title="74">                               <span class="dt">.unnest_col =</span> data)</a>
+<a class="sourceLine" id="cb22-75" title="75">  ) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-76" title="76"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">bind_cols</span>(</a>
+<a class="sourceLine" id="cb22-77" title="77">    <span class="kw">taxa_seq</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-78" title="78">             <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-79" title="79">             <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-80" title="80">             <span class="dt">.filter_cols_vec =</span> <span class="kw">c</span>(<span class="st">&quot;class&quot;</span>, <span class="st">&quot;order&quot;</span>, <span class="st">&quot;family&quot;</span>,</a>
+<a class="sourceLine" id="cb22-81" title="81">                                  <span class="st">&quot;ffg&quot;</span>, <span class="st">&quot;habit&quot;</span>, <span class="st">&quot;voltinism&quot;</span>),</a>
+<a class="sourceLine" id="cb22-82" title="82">             <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-83" title="83">             <span class="dt">.job =</span> <span class="st">&quot;rich&quot;</span>,</a>
+<a class="sourceLine" id="cb22-84" title="84">             <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-85" title="85">    <span class="kw">taxa_seq</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-86" title="86">             <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-87" title="87">             <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-88" title="88">             <span class="dt">.filter_cols_vec =</span> <span class="kw">c</span>(<span class="st">&quot;class&quot;</span>, <span class="st">&quot;order&quot;</span>, <span class="st">&quot;family&quot;</span>,</a>
+<a class="sourceLine" id="cb22-89" title="89">                                  <span class="st">&quot;ffg&quot;</span>, <span class="st">&quot;habit&quot;</span>, <span class="st">&quot;voltinism&quot;</span>),</a>
+<a class="sourceLine" id="cb22-90" title="90">             <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-91" title="91">             <span class="dt">.job =</span> <span class="st">&quot;pct_rich&quot;</span>,</a>
+<a class="sourceLine" id="cb22-92" title="92">             <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-93" title="93">    <span class="kw">taxa_seq</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-94" title="94">             <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-95" title="95">             <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-96" title="96">             <span class="dt">.filter_cols_vec =</span> <span class="kw">c</span>(<span class="st">&quot;class&quot;</span>, <span class="st">&quot;order&quot;</span>, <span class="st">&quot;family&quot;</span>,</a>
+<a class="sourceLine" id="cb22-97" title="97">                                  <span class="st">&quot;genus&quot;</span>, <span class="st">&quot;ffg&quot;</span>, <span class="st">&quot;habit&quot;</span>, <span class="st">&quot;voltinism&quot;</span>),</a>
+<a class="sourceLine" id="cb22-98" title="98">             <span class="dt">.job =</span> <span class="st">&quot;pct&quot;</span>,</a>
+<a class="sourceLine" id="cb22-99" title="99">             <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-100" title="100">    <span class="kw">taxa_seq</span>(<span class="dt">.dataframe =</span> .,</a>
+<a class="sourceLine" id="cb22-101" title="101">             <span class="dt">.key_col =</span> uid,</a>
+<a class="sourceLine" id="cb22-102" title="102">             <span class="dt">.counts_col =</span> total,</a>
+<a class="sourceLine" id="cb22-103" title="103">             <span class="dt">.filter_cols_vec =</span> <span class="kw">c</span>(<span class="st">&quot;class&quot;</span>, <span class="st">&quot;order&quot;</span>, <span class="st">&quot;family&quot;</span>,</a>
+<a class="sourceLine" id="cb22-104" title="104">                                  <span class="st">&quot;ffg&quot;</span>, <span class="st">&quot;habit&quot;</span>, <span class="st">&quot;voltinism&quot;</span>),</a>
+<a class="sourceLine" id="cb22-105" title="105">             <span class="dt">.group_col =</span> target_taxon,</a>
+<a class="sourceLine" id="cb22-106" title="106">             <span class="dt">.job =</span> <span class="st">&quot;simpson&quot;</span>,</a>
+<a class="sourceLine" id="cb22-107" title="107">             <span class="dt">.unnest_col =</span> data),</a>
+<a class="sourceLine" id="cb22-108" title="108">  )</a></code></pre></div>
+</div>
+<div id="metric-selection" class="section level2">
+<h2><span class="header-section-number">11.2</span> Metric Selection</h2>
+<div id="traintest-split" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Train/Test Split</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">set.seed</span>(<span class="dv">42</span>)</a>
+<a class="sourceLine" id="cb23-2" title="2">train_test_split &lt;-<span class="st"> </span>metrics.df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>data) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-4" title="4"><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span>rt_nrsa_cat <span class="op">%in%</span><span class="st"> &quot;intermediate disturbance&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">rt_nrsa_cat =</span> <span class="kw">str_replace_all</span>(rt_nrsa_cat, <span class="st">&quot; &quot;</span>, <span class="st">&quot;_&quot;</span>),</a>
+<a class="sourceLine" id="cb23-6" title="6">         <span class="dt">rt_nrsa_cat =</span> <span class="kw">factor</span>(rt_nrsa_cat, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;most_disturbed&quot;</span>,</a>
+<a class="sourceLine" id="cb23-7" title="7">                                                   <span class="st">&quot;least_disturbed&quot;</span>))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-8" title="8"><span class="st">  </span><span class="kw">initial_split</span>()</a>
+<a class="sourceLine" id="cb23-9" title="9"></a>
+<a class="sourceLine" id="cb23-10" title="10">train.df &lt;-<span class="st"> </span><span class="kw">training</span>(train_test_split)</a>
+<a class="sourceLine" id="cb23-11" title="11">test.df &lt;-<span class="st"> </span><span class="kw">testing</span>(train_test_split)</a></code></pre></div>
+</div>
+<div id="preprocess" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Preprocess</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1">rec_obj &lt;-<span class="st"> </span><span class="kw">recipe</span>(rt_nrsa_cat <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> train.df) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw">update_role</span>(uid, <span class="dt">new_role =</span> <span class="st">&quot;sample_id&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw">step_normalize</span>(<span class="kw">all_predictors</span>()) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-4" title="4"><span class="st">  </span><span class="kw">step_nzv</span>(<span class="kw">all_predictors</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-5" title="5"><span class="st">  </span><span class="kw">step_corr</span>(<span class="kw">all_predictors</span>(),</a>
+<a class="sourceLine" id="cb24-6" title="6">            <span class="dt">threshold =</span> <span class="fl">0.75</span>,</a>
+<a class="sourceLine" id="cb24-7" title="7">            <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb24-8" title="8"><span class="st">  </span><span class="kw">step_pca</span>(<span class="kw">all_predictors</span>(),</a>
+<a class="sourceLine" id="cb24-9" title="9">           <span class="dt">num_comp =</span> <span class="dv">4</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-10" title="10"><span class="st">  </span><span class="kw">step_adasyn</span>(rt_nrsa_cat,</a>
+<a class="sourceLine" id="cb24-11" title="11">              <span class="dt">neighbors =</span> <span class="dv">5</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb24-12" title="12"><span class="st">  </span><span class="kw">prep</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">pca_results.df &lt;-<span class="st"> </span>rec_obj <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="st">  </span><span class="kw">tidy</span>(<span class="dt">number =</span> <span class="dv">4</span>)</a></code></pre></div>
+</div>
+<div id="model" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Model</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">logit_mod &lt;-</a>
+<a class="sourceLine" id="cb26-2" title="2"><span class="st">  </span><span class="kw">logistic_reg</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb26-3" title="3"><span class="st">  </span><span class="kw">set_engine</span>(<span class="st">&quot;glm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">met.flow &lt;-<span class="st"> </span><span class="kw">workflow</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-2" title="2"><span class="st">  </span><span class="kw">add_recipe</span>(rec_obj) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb27-3" title="3"><span class="st">  </span><span class="kw">add_model</span>(logit_mod)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1">(fit_train &lt;-<span class="st"> </span><span class="kw">fit</span>(met.flow, <span class="dt">data =</span> train.df))</a></code></pre></div>
+<pre><code>## == Workflow [trained] ==========================================================
+## Preprocessor: Recipe
+## Model: logistic_reg()
+## 
+## -- Preprocessor ----------------------------------------------------------------
+## 5 Recipe Steps
+## 
+## * step_normalize()
+## * step_nzv()
+## * step_corr()
+## * step_pca()
+## * step_adasyn()
+## 
+## -- Model -----------------------------------------------------------------------
+## 
+## Call:  stats::glm(formula = formula, family = stats::binomial, data = data)
+## 
+## Coefficients:
+## (Intercept)          PC1          PC2          PC3          PC4  
+##    -0.99023      0.44787     -0.06578      0.07064     -0.20949  
+## 
+## Degrees of Freedom: 99 Total (i.e. Null);  95 Residual
+## Null Deviance:       138.6 
+## Residual Deviance: 58.38     AIC: 68.38</code></pre>
+<div id="predictions" class="section level4">
+<h4><span class="header-section-number">11.2.3.1</span> Predictions</h4>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1">pred_train &lt;-<span class="st"> </span><span class="kw">predict</span>(fit_train, <span class="dt">new_data =</span> train.df, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="st">  </span><span class="kw">bind_cols</span>(<span class="kw">select</span>(train.df, rt_nrsa_cat))</a>
+<a class="sourceLine" id="cb30-3" title="3"></a>
+<a class="sourceLine" id="cb30-4" title="4">pred_test &lt;-<span class="st"> </span><span class="kw">predict</span>(fit_train, <span class="dt">new_data =</span> test.df, <span class="dt">type =</span> <span class="st">&quot;prob&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb30-5" title="5"><span class="st">  </span><span class="kw">bind_cols</span>(<span class="kw">select</span>(test.df, rt_nrsa_cat))</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="kw">ggplot</span>(pred_test, <span class="kw">aes</span>(.pred_least_disturbed, <span class="kw">as.numeric</span>(rt_nrsa_cat) <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-3" title="3"><span class="st">  </span><span class="kw">stat_smooth</span>(</a>
+<a class="sourceLine" id="cb31-4" title="4">    <span class="dt">method =</span> <span class="st">&quot;glm&quot;</span>,</a>
+<a class="sourceLine" id="cb31-5" title="5">    <span class="dt">se =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb31-6" title="6">    <span class="dt">method.args =</span> <span class="kw">list</span>(<span class="dt">family =</span> binomial))</a></code></pre></div>
+<p><img src="rmarkdown_crash_course_book_files/figure-html/logit_plot-1.png" width="672" /></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1">simple_glm_roc &lt;-<span class="st"> </span>pred_train <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-2" title="2"><span class="st">  </span><span class="kw">roc_curve</span>(rt_nrsa_cat, .pred_least_disturbed)</a>
+<a class="sourceLine" id="cb32-3" title="3"></a>
+<a class="sourceLine" id="cb32-4" title="4">pred_train <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb32-5" title="5"><span class="st">  </span><span class="kw">roc_auc</span>(rt_nrsa_cat, .pred_least_disturbed)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   .metric .estimator .estimate
+##   &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;
+## 1 roc_auc binary         0.904</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">autoplot</span>(simple_glm_roc)</a></code></pre></div>
+<p><img src="rmarkdown_crash_course_book_files/figure-html/roc_plot-1.png" width="672" /></p>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="sequence-through-multiple-metrics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="acknowledgements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

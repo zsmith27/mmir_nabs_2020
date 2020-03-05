@@ -5,4 +5,224 @@ date: "2/13/2020"
 output: html_document
 ---
 
-# Metric Selection
+# Brining it All Together
+
+```{r, message=FALSE}
+library(mmir)
+library(tidyverse)
+library(rsample)
+library(recipes)
+library(parsnip)
+library(workflows)
+library(yardstick)
+library(themis)
+```
+
+Prepare the data for metric calculation.
+```{r req_data_nest_again}
+data("nrsa_nap_0809")
+
+nest.df <- nrsa_nap_0809 %>% 
+  group_nest(uid, rt_nrsa_cat, .key = "data") 
+```
+
+## Metric Calculation
+
+The following code-chunk will produce more than 1,000 biological metrics.
+```{r putting_it_together, eval=FALSE}
+metrics.df <- nest.df %>% 
+  dplyr::mutate(
+    rich_family = taxa_rich(.dataframe = .,
+                            .key_col = uid,
+                            .group_col = family,
+                            .unnest_col = data),
+    rich_genus = taxa_rich(.dataframe = .,
+                           .key_col = uid,
+                           .group_col = genus,
+                           .unnest_col = data),
+    rich_target_taxon = taxa_rich(.dataframe = .,
+                                  .key_col = uid,
+                                  .group_col = target_taxon,
+                                  .unnest_col = data),
+    gini_simpson_ept = taxa_div(.dataframe = .,
+                                .key_col = uid,
+                                .counts_col = total,
+                                .group_col = target_taxon,
+                                .filter = order %in% c("ephemeroptera",
+                                                       "plecoptera",
+                                                       "trichoptera"),
+                                .job = "gini_simpson",
+                                .unnest_col = data),
+    simpson_ept = taxa_div(.dataframe = .,
+                           .key_col = uid,
+                           .counts_col = total,
+                           .group_col = target_taxon,
+                           .filter = order %in% c("ephemeroptera",
+                                                  "plecoptera",
+                                                  "trichoptera"),
+                           .job = "simpson",
+                           .unnest_col = data),
+    shannon_ept = taxa_div(.dataframe = .,
+                           .key_col = uid,
+                           .counts_col = total,
+                           .group_col = target_taxon,
+                           .filter = order %in% c("ephemeroptera",
+                                                  "plecoptera",
+                                                  "trichoptera"),
+                           .job = "shannon",
+                           .base_log = 2,
+                           .unnest_col = data),
+    pct_ept = taxa_pct(.dataframe = .,
+                       .key_col = uid,
+                       .counts_col = total,
+                       .filter = order %in% c("ephemeroptera",
+                                              "plecoptera",
+                                              "trichoptera"),
+                       .unnest_col = data),
+    pct_cote = taxa_pct(.dataframe = .,
+                        .key_col = uid,
+                        .counts_col = total,
+                        .filter = order %in% c("coleoptera",
+                                               "odonata",
+                                               "trichoptera",
+                                               "ephemeroptera"),
+                        .unnest_col = data),
+    dom_1_target_taxon = taxa_dom(.dataframe = .,
+                                  .key_col = uid,
+                                  .counts_col = total,
+                                  .group_col = target_taxon,
+                                  .dom_level = 1,
+                                  .unnest_col = data),
+    dom_5_target_taxon = taxa_dom(.dataframe = .,
+                                  .key_col = uid,
+                                  .counts_col = total,
+                                  .group_col = target_taxon,
+                                  .dom_level = 5,
+                                  .unnest_col = data),
+    tol_index = taxa_tol_index(.dataframe = .,
+                               .key_col = uid,
+                               .counts_col = total,
+                               .tol_col = ptv,
+                               .unnest_col = data)
+  ) %>% 
+  dplyr::bind_cols(
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
+             .filter_cols_vec = c("class", "order", "family",
+                                  "ffg", "habit", "voltinism"),
+             .group_col = target_taxon,
+             .job = "rich",
+             .unnest_col = data),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
+             .filter_cols_vec = c("class", "order", "family",
+                                  "ffg", "habit", "voltinism"),
+             .group_col = target_taxon,
+             .job = "pct_rich",
+             .unnest_col = data),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
+             .filter_cols_vec = c("class", "order", "family",
+                                  "genus", "ffg", "habit", "voltinism"),
+             .job = "pct",
+             .unnest_col = data),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
+             .filter_cols_vec = c("class", "order", "family",
+                                  "ffg", "habit", "voltinism"),
+             .group_col = target_taxon,
+             .job = "simpson",
+             .unnest_col = data),
+  )
+```
+
+## Metric Selection
+
+### Train/Test Split
+
+```{r train_test_split}
+set.seed(42)
+train_test_split <- metrics.df %>% 
+  select(-data) %>% 
+  filter(!rt_nrsa_cat %in% "intermediate disturbance") %>% 
+  mutate(rt_nrsa_cat = str_replace_all(rt_nrsa_cat, " ", "_"),
+         rt_nrsa_cat = factor(rt_nrsa_cat, levels = c("most_disturbed",
+                                                   "least_disturbed"))) %>% 
+  initial_split()
+
+train.df <- training(train_test_split)
+test.df <- testing(train_test_split)
+```
+
+### Preprocess
+
+```{r recipe}
+rec_obj <- recipe(rt_nrsa_cat ~ ., data = train.df) %>% 
+  update_role(uid, new_role = "sample_id") %>% 
+  step_normalize(all_predictors()) %>% 
+  step_nzv(all_predictors()) %>%
+  step_corr(all_predictors(),
+            threshold = 0.75,
+            method = "spearman") %>% 
+  step_pca(all_predictors(),
+           num_comp = 4) %>%
+  step_adasyn(rt_nrsa_cat,
+              neighbors = 5) %>%
+  prep()
+```
+
+```{r pca_resutls}
+pca_results.df <- rec_obj %>% 
+  tidy(number = 4)
+```
+
+### Model
+
+```{r logit_model}
+logit_mod <-
+  logistic_reg() %>%
+  set_engine("glm")
+```
+
+```{r workflow}
+met.flow <- workflow() %>% 
+  add_recipe(rec_obj) %>% 
+  add_model(logit_mod)
+```
+
+```{r fit}
+(fit_train <- fit(met.flow, data = train.df))
+```
+
+#### Predictions
+
+```{r predictions}
+pred_train <- predict(fit_train, new_data = train.df, type = "prob") %>% 
+  bind_cols(select(train.df, rt_nrsa_cat))
+
+pred_test <- predict(fit_train, new_data = test.df, type = "prob") %>%
+  bind_cols(select(test.df, rt_nrsa_cat))
+```
+
+```{r logit_plot}
+ggplot(pred_test, aes(.pred_least_disturbed, as.numeric(rt_nrsa_cat) - 1)) +
+  geom_point() +
+  stat_smooth(
+    method = "glm",
+    se = FALSE,
+    method.args = list(family = binomial))
+```
+
+```{r roc_plot}
+simple_glm_roc <- pred_train %>% 
+  roc_curve(rt_nrsa_cat, .pred_least_disturbed)
+
+pred_train %>% 
+  roc_auc(rt_nrsa_cat, .pred_least_disturbed)
+
+autoplot(simple_glm_roc)
+```

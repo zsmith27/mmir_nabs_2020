@@ -5,49 +5,32 @@ date: "2/13/2020"
 output: html_document
 ---
 
-# Abundance and Relative Abundance (%) Metrics
-
-Abundance refers to the total count of all taxa observed during a sampling event. We can apply a filter to this metric as well to focus on specific aspects of the community, such as the abundance of EPT.
-
-```{r abun_comm}
-nest.df <- nest.df %>% 
-  dplyr::mutate(
-    abundance = taxa_abund(.,
-                           .key_col = unique_id,
-                           .counts_col = reporting_value),
-    abund_ept = taxa_abund(.,
-                           .key_col = unique_id,
-                           .counts_col = reporting_value,
-                           .filter = order %in% c("ephemeroptera",
-                                                  "plecoptera",
-                                                  "trichoptera"))
-  )
-```
-
-```{r abund_comm_tbl, echo=FALSE}
-standard_dt(nest.df)
-```
-
-## Subset Relative Abundance (%)
+# Relative Abundance (%) Metrics
 
 Generally, abundance metrics are better represented on a normalized scale. Calculating the relative abundance (percentage) of a subset metrics should provide a more robust measure than raw abundance measures.
-
 ```{r rel_abund}
-nest.df <- nest.df %>% 
+pct.df <- nest.df %>% 
   dplyr::mutate(
-    pct_ephemeroptera = taxa_pct(.data = .,
-                                  .key_col = unique_id,
-                                  .counts_col = reporting_value,
-                                  .filter = order %in% "ephemeroptera"),
-    pct_ept = taxa_pct(.data = .,
-                        .key_col = unique_id,
-                        .counts_col = reporting_value,
-                        .filter = order %in% c("ephemeroptera",
-                                                   "plecoptera",
-                                                   "trichoptera"))
+    pct_ephemeroptera = taxa_pct(.dataframe = .,
+                                 .key_col = uid,
+                                 .counts_col = total,
+                                 .filter = order %in% "ephemeroptera",
+                                 .unnest_col = data),
+    pct_ept = taxa_pct(.dataframe = .,
+                       .key_col = uid,
+                       .counts_col = total,
+                       .filter = order %in% c("ephemeroptera",
+                                              "plecoptera",
+                                              "trichoptera"),
+                       .unnest_col = data),
+    pct_shred = taxa_pct(.dataframe = .,
+                         .key_col = uid,
+                         .counts_col = total,
+                         .filter = grepl("sh", ffg),
+                         .unnest_col = data)
   )
 ```
 
 ```{r rel_abund_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(pct.df)
 ```

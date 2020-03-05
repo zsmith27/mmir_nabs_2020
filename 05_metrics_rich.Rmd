@@ -12,43 +12,45 @@ Richness refers to the number of unique taxa. Typically, richness is used to ref
 ## Community Richness
 
 ```{r rich_comm}
-nest.df <- nest.df %>% 
+rich.df <- nest.df %>% 
   dplyr::mutate(
-    rich_family = taxa_rich(.data = .,
-                            .key_col = unique_id,
+    rich_family = taxa_rich(.dataframe = .,
+                            .key_col = uid,
+                            .counts_col = total,
                             .group_col = family,
                             .unnest_col = data),
-    rich_genus = taxa_rich(.data = .,
-                            .key_col = unique_id,
-                            .group_col = genus,
-                            .unnest_col = data)
+    rich_genus = taxa_rich(.dataframe = .,
+                           .key_col = uid,
+                           .counts_col = total,
+                           .group_col = genus,
+                           .unnest_col = data)
   )
-
-
-
 ```
 
 ```{r rich_comm_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(rich.df)
 ```
 
 ## Subset Richness
 
 ```{r rich_sub}
-nest.df <- nest.df %>% 
+sub_rich.df <- nest.df %>% 
   dplyr::mutate(
-    rich_ephemeroptera_fam = taxa_rich(.data = .,
-                                       .key_col = unique_id,
+    rich_ephemeroptera_fam = taxa_rich(.dataframe = .,
+                                       .key_col = uid,
+                                       .counts_col = total,
                                        .group_col = family,
                                        .filter = order %in% "ephemeroptera",
                                        .unnest_col = data),
-    rich_ephemeroptera_gen = taxa_rich(.data = .,
-                                       .key_col = unique_id,
+    rich_ephemeroptera_gen = taxa_rich(.dataframe = .,
+                                       .key_col = uid,
+                                       .counts_col = total,
                                        .group_col = genus,
                                        .filter = order %in% "ephemeroptera",
                                        .unnest_col = data),
-    rich_ept_gen = taxa_rich(.data = .,
-                             .key_col = unique_id,
+    rich_ept_gen = taxa_rich(.dataframe = .,
+                             .key_col = uid,
+                             .counts_col = total,
                              .group_col = genus,
                              .filter = order %in% c("ephemeroptera",
                                                     "plecoptera",
@@ -58,5 +60,5 @@ nest.df <- nest.df %>%
 ```
 
 ```{r rich_sub_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(sub_rich.df)
 ```

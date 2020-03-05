@@ -10,10 +10,10 @@ output: html_document
 ```{r seq_rich}
 seq.df <- nest.df %>% 
   bind_cols(
-    taxa_seq(.data = .,
-             .key_col = unique_id,
-             .counts_col = reporting_value,
-             .filter_cols_vec = c("class", "order", "family"),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
+             .filter_cols_vec = c("class", "order"),
              .group_col = genus,
              .job = "rich",
              .unnest_col = data))
@@ -26,30 +26,33 @@ standard_dt(seq.df)
 
 
 ```{r seq_mult}
-nest.df <- nest.df %>% 
+seq_mult.df <- nest.df %>% 
   bind_cols(
-    taxa_seq(.data = .,
-             .key_col = unique_id,
-             .counts_col = reporting_value,
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
              .filter_cols_vec = c("class", "order", "family"),
              .group_col = genus,
-             .job = "rich"),
-    taxa_seq(.data = .,
-             .key_col = unique_id,
-             .counts_col = reporting_value,
+             .job = "rich",
+             .unnest_col = data),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
              .filter_cols_vec = c("class", "order", "family"),
              .group_col = genus,
-             .job = "pct"),
-    taxa_seq(.data = .,
-             .key_col = unique_id,
-             .counts_col = reporting_value,
+             .job = "pct",
+             .unnest_col = data),
+    taxa_seq(.dataframe = .,
+             .key_col = uid,
+             .counts_col = total,
              .filter_cols_vec = c("class", "order", "family"),
              .group_col = genus,
              .base_log = 2,
-             .job = "shannon"))
+             .job = "shannon",
+             .unnest_col = data))
 ```
 
 
 ```{r seq_mult_tbl, echo=FALSE}
-standard_dt(nest.df)
+standard_dt(seq_mult.df)
 ```

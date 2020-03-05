@@ -11,18 +11,32 @@ __Metrics:__ a measure of a specific aspect of a biological community.
 
 ## Metric Function List
 
-1. Richness: `taxa_rich()`
-2. Relative Richness: `taxa_pct_rich()`
-3. Diversity Indices: `taxa_div()`
-4. Abundance: `taxa_abund()`
-5. Relative Abundance: `taxa_pct()`
-6. Dominance: `taxa_dom()`
-7. Tolerance Indices: `taxa_tol()`
+All of the metric functions in __mmir__ begin with the prefix `taxa_`. This prefix makes it easier to call these functions becuase RStudio will provide a list of functions that begin with the same prefix, in this case `taxa_`.
+
+1. `taxa_rich()`calculates taxonomic richness.
+2. `taxa_pct_rich()` calculates relative taxonomic richness.
+3. `taxa_div()` calculates taxonomic diversity indices.
+    + `shannon` Shannon-Wiener Diversity
+    + `simpson` Simpson's Diversity
+    + `margalef` Margalef's Diversity
+    + `menhinick` Menhinick's Diversity
+    + `pielou` Pielou Evenness
+4. `taxa_abund()` calculates taxonomic abundance.
+5. `taxa_pct()` calculates relative taxonomic abundance.
+6. `taxa_dom()` calculates relative taxonomic dominance.
+7. `taxa_tol_index()` calculates taxonomic tolerance indices.
 
 ## Metric Function Arguements
 
-- `.data` = A data frame where each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.
-- `.key_col` = A single column that represents a unique ID or key (i.e., site ID) that can be used to group the data.
-- `.counts_col` = A single numeric column that represents taxonomic counts.
-- `.group_col` = A single column that represents a taxomic rank or group of interest.
-- `.filter` = A filter to be applied to the data prior to calculation the metric of interest.
+- `.dataframe` = A data frame where each row should represent the number of individuals enumerated for a single taxon collected during a single sampling event.
+- `.key_col` = One unquoted column name that represents a key (i.e., unique ID) for a sampling event for which to group (i.e., aggregate) the data.
+- `.counts_col` = One unquoted column name that represents taxonomic counts.
+- `.filter` = A logical statement to subset the data frame prior to calculating the metric of interest.
+- `.unnest_col` = One unqouted column name that represents nested data. If this column is NULL (default), then the data will not be unnested.
+- * `.group_col` = One unquoted column name that represents a taxomic rank or group of interest.
+
+## Metric Function Output
+
+The output of each of these functions will be a __vector__.
+
+__Vector Example:__ `r c(10, 1, 13, 15, 2, 6, 7)`
